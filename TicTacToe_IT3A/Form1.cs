@@ -36,7 +36,7 @@ namespace TicTacToe_IT3A
 
         private void Game_OnWin(Field.State state)
         {
-            MessageBox.Show("")
+            MessageBox.Show($"{state} wins");
         }
         private void Game_OnChange()
         
@@ -95,10 +95,14 @@ namespace TicTacToe_IT3A
 
         private void btnRestart_Click(object sender, EventArgs e)
         {
-            if (game != null) game.OnChange -= Game_OnChange;
+            if (game != null)
+            {
+                game.OnChange -= Game_OnChange;
+                game.OnWin -= Game_OnWin;
+            }
             game = new Game();
             game.OnChange += Game_OnChange;
-            Game_OnWin += Game_OnWin;
+            game.OnWin += Game_OnWin;
             Game_OnChange();
         }
 

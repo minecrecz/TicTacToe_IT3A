@@ -14,6 +14,7 @@ namespace TicTacToe_IT3A
 
         public Action OnChange;
         public Action<Field.State> OnWin;
+        private bool hasEnded;
 
         public Game()
         {
